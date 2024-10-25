@@ -1,0 +1,178 @@
+01 - Iniciando com Node.js
+//modulo http criado
+import http from 'node:http'
+
+//criacao do servidor http
+const server = http.createServer(( request, response) => {
+      return response.end('hello ')
+})
+
+  server.listen(3333)
+
+  // localhost:3333
+
+////////////////////////////////////////////
+
+//modulo http criado
+import http from 'node:http'
+
+
+// - criar usuarios
+ //- listagem usuarios
+ //-  Edicao de usuarios
+ //-  Remoçao de usuarios
+ 
+// - HTTP {GET, POST, PUT, PATCH, DELETE}
+  // -Metodo HTTP
+   // -URL
+
+   // Principais  metodoa http {GET, POST, PUT, PATCH, DELETE}
+   // GET => buscar um recurso  do back-end
+   //POST => criar um recurso no back- end
+   // PUT => Atualizar um recurso no back-end(varias actualizacao.ex:noem, email, ..etc)
+   // PATCH => Actualizar uma informacao especifica de um recurso no back-end(uma unica actualizacao.Ex: nome)
+   // DELETE => Deletar um recurso dol back-end
+
+
+   // GET / users => Buscando usuarios do back-end
+     // POST / users => Criar um  usuario no  back-end
+
+
+//criacao do servidor http
+const server = http.createServer(( request, response) => {
+    const{ method, url } = response
+
+    if ( method == 'GET' && url == '/users'){
+        return response.end('Listagem de usuarios')
+    }
+
+    if (method == 'POST' && url =='/users' ){
+        return response.end('Criacao de usuarios')
+    }
+
+    return response.end('oi')
+})
+
+  server.listen(3333)
+
+ 
+
+
+
+
+Topicos API e resumo
+semana 2
+                  01 - Rotas de criação e listagem (Métodos HTTP)
+
+ - HTTP {GET, POST, PUT, PATCH, DELETE}
+   -Metodo HTTP
+   -URL
+
+   Principais  metodoa http {GET, POST, PUT, PATCH, DELETE}
+    GET => buscar um recurso  do back-end
+   POST => criar um recurso no back- end
+    PUT => Atualizar um recurso no back-end(varias actualizacao.ex:noem, email, ..etc)
+    PATCH => Actualizar uma informacao especifica de um recurso no back-end(uma unica actualizacao.Ex: nome)
+    DELETE => Deletar um recurso dol back-end
+
+
+    GET / users => Buscando usuarios do back-end
+     POST / users => Criar um  usuario no  back-end
+
+
+criacao do servidor http
+
+                                    02 - Salvando usuários em memória (Headers) 
+
+Aula2
+// Stateful: depende da memoria,  das informacoes q sao salvas em memorias e pode funcionar de forma diferentes 
+ // Stateless:  nao salva nada em memoria , geralmente salva as informacoes em banco de dados, 
+arquivos de textos  e funciona da mesma forma, sem sofrer alteracao
+ // Cabecalho(Requisicao/resposta) => metadados: sao informacoes que quanto  o back-end e front saibam lidas com requisicoes de melhor  forma.
+
+                                    
+
+                                   03 - Conhecendo HTTP status codes 
+
+
+
+1. **`return response.writeHead(201).end();`**:
+   - **`response.writeHead(201)`**: Este método define o cabeçalho da resposta HTTP.
+ O código `201` significa "Criado", indicando que a solicitação foi bem-sucedida e resultou na criação de um recurso (como em uma operação de POST).
+   
+- **`.end()`**: Este método finaliza a resposta. 
+Ele pode incluir um corpo opcional, mas aqui não é passado nenhum argumento, 
+o que indica que não há conteúdo adicional a ser enviado ao cliente.
+ 
+
+  2 - **`response.writeHead(401)`**: O código `401` indica "Não autorizado",
+    sugerindo que o usuário não está autenticado ou não tem permissão para acessar o recurso.
+   .end()`**: Similar ao anterior, finaliza a resposta sem conteúdo adicional.
+ 
+Resumo
+- O código verifica se uma condição de sucesso é verdadeira. Se for, retorna um status HTTP `201` (Criado). Se não, retorna um status `401` (Não autorizado). O objetivo é informar ao cliente sobre o resultado da solicitação.
+
+Se precisar de mais alguma coisa ou tiver outras dúvidas, é só avisar!
+
+
+
+
+                                 Postman
+
+O Postman é uma ferramenta que dá suporte à documentação das requisições feitas pela API. 
+Ele possui ambiente para a documentação, execução de testes de APIs e requisições em geral.
+
+com o Postman, esse teste é muito mais otimizado. Tudo o que precisa ser feito é:
+
+Obter a conexão da rota à barra de endereços;
+Selecionar o método de resposta GET na caixa suspensa à esquerda;
+Digitar a chave da API na seção "Headers";
+Especificar o formato da resposta, que poderia ser em JSON, por exemplo, e;
+Clicar em enviar.
+
+
+Por que usar o Postman?
+Além de ser um aplicativo gratuito e fácil de aprender, 
+com pouco tempo você já estará enviando seus primeiros requests (solicitações/requisições). 
+No mais, trata-se de uma ferramenta com um amplo suporte para todas as APIs e Schemas.
+
+Solicitações HTTP
+Você insere a URL da API, escolhe o tipo de solicitação (GET, POST, etc.), 
+adiciona quaisquer parâmetros, cabeçalhos ou corpo da solicitação necessários, e envia a solicitação.
+
+
+
+Como acessar API pelo Postman
+Postman é um aplicativo que, entre outras coisas, 
+facilita o acesso aos dados de uma API. Para acessá-lo, primeiramente é necessário fazer o download do aplicativo,
+ após instalação siga os passos a seguir: 
+
+1. Instale e configure o Postman.
+
+2. Crie uma conta e faça o login.
+
+3. Clique em New >> Get Request.
+
+4. Na barra de navegação, basta selecionar a opção GET e colocar a seguinte URL que deve ser testada: faça seu login, inserindo e senha cadastrada no momento do registro da API. Para isso, clique na aba Body e coloque, copie e cole o seguinte código substituindo os valores abaixo por sua própria credencial:
+Entre as principais vantagens em se usar o Postman, podemos destacar:
+
+ funcionalidades do Postman:
+
+Suporte a Vários Protocolos: Permite chamadas de API em REST, SOAP e HTTP.
+Formatos de Dados**: Suporta formatos populares como OpenAPI, GraphQL e RAML.
+Acessibilidade**: O acesso é facilitado com login em conta, permitindo acesso a arquivos em qualquer lugar com o aplicativo Postman instalado.
+Uso de Coleções**: Permite organizar chamadas de API em coleções e subpastas, facilitando a gestão de suítes de teste.
+Colaboração**: Facilita o compartilhamento de coleções e ambientes através de importação/exportação ou links diretos.
+Ambientes**: Permite criar múltiplos ambientes para reduzir repetições de testes com a mesma coleção.
+Testes e Validações**: Possibilita adicionar verificações para status de resposta HTTP, garantindo a cobertura de testes.
+Automação de Testes**: Oferece o Collection Runner ou Newman para executar testes em múltiplas iterações, economizando tempo.
+
+Essas funcionalidades fazem do Postman uma ferramenta poderosa para o desenvolvimento e teste de APIs. Se precisar de mais informações, é só avisar!
+
+Conclusão
+O objetivo dos desenvolvedores é fornecer cada vez mais garantias para suas entregas com produtos cada vez mais estáveis e eficientes. 
+Portanto, testar todos os detalhes possíveis dos projetos em desenvolvimento, incluindo APIs, é um requisito fundamental para o sucesso do lançamento de um novo software. 
+---------------------------------------------------------
+
+
+
