@@ -1,7 +1,24 @@
-import http, { request } from 'node:http'
+import http from 'node:http'
+import { Transform } from 'node:stream'
 
-const server = http.createServer((request, response) =>{
 
+
+class InverseNumberStream extends Transform {
+  _transform(chunk, encoding, callback) {
+    const transformed = Number(chunk.toString()) * -1
+
+    console.log(transformed)
+
+    callback(null, Buffer.from(String(transformed)))
+  }
+}
+
+// request => ReadableStream   , ler dados na requisicao
+// Response => WritableStream   , escrever dados na resposta
+const server = http.createServer((request, response) => {
+  return request
+    .pipe(new InverseNumberStream())
+    .pipe(response)
 
 })
 

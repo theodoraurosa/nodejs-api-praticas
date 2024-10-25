@@ -11,12 +11,6 @@ const server = http.createServer(( request, response) => {
 
   // localhost:3333
 
-////////////////////////////////////////////
-
-//modulo http criado
-import http from 'node:http'
-
-
 // - criar usuarios
  //- listagem usuarios
  //-  Edicao de usuarios
@@ -57,9 +51,6 @@ const server = http.createServer(( request, response) => {
 
  
 
-
-
-
 Topicos API e resumo
 semana 2
                   01 - Rotas de criação e listagem (Métodos HTTP)
@@ -82,7 +73,7 @@ semana 2
 
 criacao do servidor http
 
-                                    02 - Salvando usuários em memória (Headers) 
+  02 - Salvndo usuários em memória (Headers) 
 
 Aula2
 // Stateful: depende da memoria,  das informacoes q sao salvas em memorias e pode funcionar de forma diferentes 
@@ -92,8 +83,7 @@ arquivos de textos  e funciona da mesma forma, sem sofrer alteracao
 
                                     
 
-                                   03 - Conhecendo HTTP status codes 
-
+  03 - Conhecendo HTTP status codes 
 
 
 1. **`return response.writeHead(201).end();`**:
@@ -117,7 +107,7 @@ Se precisar de mais alguma coisa ou tiver outras dúvidas, é só avisar!
 
 
 
-                                 Postman
+Postman
 
 O Postman é uma ferramenta que dá suporte à documentação das requisições feitas pela API. 
 Ele possui ambiente para a documentação, execução de testes de APIs e requisições em geral.

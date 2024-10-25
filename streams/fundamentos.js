@@ -11,44 +11,37 @@
 
 // streams =>
 
-    //process.stdin
-       //.pipe(process.stdout)
+//process.stdin
+//.pipe(process.stdout)
 
-       import { Readable, Transform, Writable } from 'node:stream'
+import { Readable, Transform, Writable } from 'node:stream'
 
-       class OneToHundredStrean extends Readable{
-           index = 1
-           _read() {
-              const i = this.index++
+class OneToHundredStrean extends Readable {
+  index = 1
+  _read() {
+    const i = this.index++
 
-         setTimeout(() =>{
-            if ( i > 100){
-                this.push(null)
-              }else{
-                const buf = Buffer.from(String(i))
+    setTimeout(() => {
+      if (i > 100) {
+        this.push(null)
+      } else {
+        const buf = Buffer.from(String(i))
 
-                this.push(buf)
-              }
+        this.push(buf)
+      }
 
-         }, 100)
-              
-             
-           }
-       }
+    }, 100)
 
 
-       class InversNumberStream extends Transform{
-        _transform(chunk, encoding, callback){
-            const _transform = Number(chunk.toString())
-        }
+  }
+}
 
-       }
 
-       class MultiplyByStream extends Writable{
-        
-       }
 
-       
-       new OneToHundredStrean()
-       .pipe(process.stdout)
-       
+class MultiplyByStream extends Writable {
+
+}
+
+
+new OneToHundredStrean()
+  .pipe(process.stdout)
